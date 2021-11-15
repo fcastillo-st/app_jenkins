@@ -1,0 +1,5 @@
+seteo de globales para git 
+
+git config --global user.email "fcastillo@stcomputacion.cl"
+git config --global user.name "fcastillo"
+git config --global pull.rebase false
