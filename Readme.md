@@ -1,6 +1,6 @@
-#Readme
+# Readme
 
-###apuntes/torpedos de distintos proyectos
+### apuntes/torpedos de distintos proyectos
 
 ...
 
