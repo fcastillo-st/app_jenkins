@@ -1,0 +1,39 @@
+<Virtualhost *:443>
+nameserver api.biapp.cl
+
+ProxyPass "/"  "http://172.16.50.16:8080/"
+ProxyPassReverse "/"  "http://172.16.50.16:8080/"
+
+SSLEngine on
+SSLCertificateFile /etc/pki/tls/certs/wc-biapp-local.crt
+SSLCertificateKeyFile /etc/pki/tls/private/wc-biapp-local.key
+
+Header always append X-Frame-Options deny
+Header always set Strict-Transport-Security "max-age=63072000; includeSubdomains; preload"
+Header always set X-Content-Type-Options: nosniff
+Header always set Referrer-Policy "strict-origin"
+Header always set Permissions-Policy "geolocation=(),midi=(),sync-xhr=(),microphone=(),camera=(),magnetometer=(),gyroscope=(),fullscreen=(self),payment=()"
+Header always set Content-Security-Policy default-src 'none'; script-src 'self' *.amazonaws.com ; connect-src 'self'; img-src 'self' ; style-src 'self' gstatic.com  maxcdn.bootstrapcdn.com *.googleapis.com ;base-uri 'self';form-action 'self'
+
+</VirtualHost>
+
+
+
+<Virtualhost *:443>
+nameserver testapi.biapp.cl
+
+ProxyPass "/"  "http://172.16.50.164:8080/"
+ProxyPassReverse "/"  "http://172.16.50.164:8080/"
+
+SSLEngine on
+SSLCertificateFile /etc/pki/tls/certs/wc-biapp-local.crt
+SSLCertificateKeyFile /etc/pki/tls/private/wc-biapp-local.key
+
+Header always append X-Frame-Options deny
+Header always set Strict-Transport-Security "max-age=63072000; includeSubdomains; preload"
+Header always set X-Content-Type-Options: nosniff
+Header always set Referrer-Policy "strict-origin"
+Header always set Permissions-Policy "geolocation=(),midi=(),sync-xhr=(),microphone=(),camera=(),magnetometer=(),gyroscope=(),fullscreen=(self),payment=()"
+Header always set Content-Security-Policy default-src 'none'; script-src 'self' *.amazonaws.com ; connect-src 'self'; img-src 'self' ; style-src 'self' gstatic.com  maxcdn.bootstrapcdn.com *.googleapis.com ;base-uri 'self';form-action 'self'
+
+</VirtualHost>
