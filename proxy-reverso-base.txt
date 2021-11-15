@@ -1,0 +1,11 @@
+<Virtualhost *:80>
+
+
+ProxyPass "/"  "http://10.20.6.184:8080/"
+ProxyPassReverse "/"  "http://10.20.6.184:8080/"
+
+
+#SetOutputFilter DEFLATE 
+#SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary 
+
+</VirtualHost>
