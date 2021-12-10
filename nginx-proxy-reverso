@@ -51,7 +51,7 @@ map $limit $limit_key {
             location = /50x.html {
         }
         location / {
-            proxy_pass http://INSTANCE_ID$uri$is_args$args;
+            proxy_pass http://INSTANCE_ID:8080$uri$is_args$args;
             proxy_buffering off;
             client_max_body_size 0;
             proxy_read_timeout 600s;
