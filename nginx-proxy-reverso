@@ -66,3 +66,4 @@ map $limit $limit_key {
         limit_req zone=req_zone burst=10 nodelay;
     }
 }
+}
