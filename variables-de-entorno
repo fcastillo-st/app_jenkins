@@ -4,3 +4,7 @@ DNS_RESOLVER=`grep nameserver /etc/resolv.conf | cut -d " " -f2 | sed 's/\./\\./
 INSTANCE_ID=`curl http://169.254.169.254/latest/meta-data/local-ipv4`
 sed -i.bak "s/DNS_RESOLVER/$DNS_RESOLVER/" nginx.conf
 sed -i.bak "s/INSTANCE_ID/$INSTANCE_ID/" nginx.conf
+
+
+#se ejecuta el contenedor con el comando:
+#docker run --name nginx-inverso -v /srv/nginx-config/nginx.conf:/etc/nginx/nginx.conf:ro -p 1080:80 -d nginx
