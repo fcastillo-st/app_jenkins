@@ -1,4 +1,3 @@
-INSTANCE_ID=`curl http://169.254.169.254/latest/meta-data/local-ipv4`
 user nginx;
 worker_processes auto;
 error_log /var/log/nginx/error.log;
@@ -52,7 +51,7 @@ map $limit $limit_key {
             location = /50x.html {
         }
         location / {
-            proxy_pass http://$INSTANCE_ID$uri$is_args$args;
+            proxy_pass http://INSTANCE_ID$uri$is_args$args;
             proxy_buffering off;
             client_max_body_size 0;
             proxy_read_timeout 600s;
