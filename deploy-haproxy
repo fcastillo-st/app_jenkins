@@ -30,7 +30,7 @@ spec:
         deploymentconfig: haproxy-5
     spec:
       containers:
-        - image: haproxy-5
+        - image: haproxy
           imagePullPolicy: Always
           name: haproxy-5
           ports:
