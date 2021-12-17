@@ -1,0 +1,55 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    app: haproxy-5
+  name: haproxy-5
+  namespace: rhdm-tools
+spec:
+  replicas: 1
+  selector:
+    app: haproxy-5
+    deploymentconfig: haproxy-5
+  strategy:
+    activeDeadlineSeconds: 21600
+    resources: {}
+    rollingParams:
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+    type: Rolling
+  template:
+    metadata:
+      annotations:
+        openshift.io/generated-by: OpenShiftWebConsole
+      creationTimestamp: null
+      labels:
+        app: haproxy-5
+        deploymentconfig: haproxy-5
+    spec:
+      containers:
+        - image: haproxy-5
+          imagePullPolicy: Always
+          name: haproxy-5
+          ports:
+            - containerPort: 6443
+              protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+            - mountPath: /usr/local/etc/haproxy-5             
+              name: volume-proxy5
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - configMap:
+            defaultMode: 420
+            name: haproxy-5
+          name: volume-proxy5
+  test: false
