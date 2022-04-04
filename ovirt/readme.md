@@ -15,3 +15,4 @@ chmod +x /usr/local/bin/virt-viewer.py
 
 Se recomienda asociar el archivo .vv con una aplicacion del sistema operativo el utilitario automator.
 
+![](https://git.st.cl/fcastillo/yaml-apuntes/raw/master/ovirt/img-aoutomator.png/img-aoutomator.png)
