@@ -1,0 +1,32 @@
+kind: Job
+apiVersion: batch/v1
+metadata:
+  name: fix-permission
+spec:
+  template:
+    spec:
+      volumes:
+        - name: cos-volume
+          emptyDir: {}
+      containers:
+        - resources: {}
+          terminationMessagePath: /dev/termination-log
+          name: fix-permission
+          command:
+            - sh
+            - '-c'
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: cos-volume
+              mountPath: /shared
+          terminationMessagePolicy: File
+          image: busybox
+          args:
+            - >-
+              ls -la /shared; chown -R 1001 /shared/; find /shared/ -type d
+              -print -exec chmod u=+rwx,g=+rx {} \; ;ls -la
+      restartPolicy: Never
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+  completionMode: NonIndexed
